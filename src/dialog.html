@@ -1,0 +1,149 @@
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+  crossorigin="anonymous"></script>
+
+<button class="btn btn-primary btn-select-multiple-media js-select-multiple-media ide">Lägg till bilder</button>
+<div class="js-items items"></div>
+<script>
+  function appStart(extension) {
+    var dialogButtonMultipleMedia = document.querySelector('.js-select-multiple-media');
+    var jsItems = document.querySelector('.js-items');
+    var currentItems = extension.field.getValue() || { data : [] };
+    
+    dialogButtonMultipleMedia.addEventListener('click', function(e) {
+      extension.dialogs.selectMultipleMedia({itemTypes:['test-extension']})
+        .then(function(items) {
+          if (!items) return;
+          items = cleanItems(items);
+          currentItems.data = currentItems.data.concat(items.data);
+          renderTemplate(currentItems);
+          extension.field.setValue(currentItems);
+        })
+    });
+
+    function cleanItems(items) {
+      var cleanedItems = [];
+      items.map(function (item) {
+        cleanedItems.push({
+          id: item.id,
+          type: item.type
+        });
+      });
+      return {
+        data: cleanedItems
+      }
+    }
+
+    function renderTemplate(items) {
+      var str = '';
+      if (items.data.length) {
+        getItems(items, function (items) {
+          str += '<div class="well well--items">';
+          str += '<div class="row js-sortable">';
+          items.data.map(function(item) {
+          str += '  <div class="js-item item col-xs-6 col-sm-6 col-md-3 col-lg-2" data-id="' + item.id + '">';
+          str += '    <div class="btn-group" role="group">';
+          str += '      <div type="button" class="btn btn-default js-move btn-move">Move</div>';
+          str += '      <button type="button" class="btn btn-default js-edit btn-edit">Edit</button>';
+          str += '      <button type="button" class="btn btn-default js-remove btn-remove">Remove</button>';
+          str += '    </div>';
+          str += '    <a href="#" class="thumbnail js-edit-image">';
+          str += '      <img style="height: 120px;" src="' + item.attributes.file.url + '" alt="' + item.attributes.title + '"/>';
+          str += '    </a>';
+          str += '  </div>';
+          });
+          str += '</div>'; 
+          str += '</div>';
+          jsItems.innerHTML = str;
+          setTemplateEvents()
+          extension.window.updateHeight();
+        });
+      } else {
+        str += '<div class="well well-lg text-center well--empty">';
+        str += '  <div class="fa fa-image icon"></div>';
+        str += '  <div class="text">';
+        str += '    Inga bilder ännu.<br />Klicka på knappen ovan för att lägga till bilder!';
+        str += '  </div>';
+        str += '</div>';
+        jsItems.innerHTML = str;
+        extension.window.updateHeight();
+      }
+    }
+
+    function setTemplateEvents() {
+      var items = document.querySelectorAll('.js-items .js-item');
+      [].forEach.call(items, function(item, a) {
+        var id = item.getAttribute('data-id');
+        var editButton = item.querySelector('.js-edit');
+        var editImage = item.querySelector('.js-edit-image');
+        var removeButton = item.querySelector('.js-remove');
+        editButton.addEventListener('click', function (e) {
+          editItem(id);
+        }, false); 
+        editImage.addEventListener('click', function (e) {
+          editItem(id);
+        }, false);
+        removeButton.addEventListener('click', function (e) {
+          removeItem(id);
+        }, false); 
+      });
+      $('.js-sortable').sortable({
+        items: '> div',
+        handle: '.js-move',
+        containment: 'parent',
+        placeholder: 'js-sortable-placeholder',
+        tolerance: 'pointer',
+        start: function(event, ui) {
+          ui.placeholder.addClass('col-xs-6 col-sm-4 col-md-3 col-lg-2');
+          ui.placeholder.css('margin', '0 10px 20px 10px');         
+          ui.placeholder.css('width', ui.item[0].offsetWidth - 20 + 'px');
+          ui.placeholder.css('height', ui.item[0].offsetHeight - 20 + 'px');
+          
+        }
+      });
+    }
+
+    function getItems(items, cb) {
+      var ids = items.data.map(function(item) {
+        return item.id;
+      }).join();
+      extension.bucket.get('media', {'id[eq]': ids})
+        .then(function(items) {
+          cb(items);
+        })
+    }
+
+    function editItem(id) {
+      extension.dialogs.editMediaItem(id)
+      // extension.dialogs.editItem('contact-us')
+        .then(function(res) {
+          console.log(res);
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    }
+
+    function removeItem(id) {
+      currentItems.data = currentItems.data.filter(function(item) {
+        return item.id !== id;
+      });
+      renderTemplate(currentItems);
+      extension.field.setValue(currentItems);
+    }
+
+    renderTemplate(currentItems);
+    extension.window.updateHeight();
+  }
+
+  twixly.extension.init({ enableDefault: ['*'] })
+    .then(appStart)
+    .catch(function (err) {
+      console.log(err);
+    });
+</script>
