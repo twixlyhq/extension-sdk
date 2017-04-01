@@ -4,7 +4,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://glantz@bitbucket.org/glantz/sdk.git"
+    "url": "https://github.com/twixlyhq/extension-sdk.git"
   },
   "scripts": {
     "start": "watchify index.js -o './dist/twixly-extension.min.js'",
