@@ -1,4 +1,4 @@
-# Twixly UI Extensions API Reference
+# Extension API Reference
 
 This document describes the API that an extension can use to communicate
 with the Twixly Management App.

@@ -1,7 +1,7 @@
 {
-  "name": "extensions",
-  "description": "Extensions for the CMS web app",
-  "repository": "https://github.com/twixlyhq/extensions.git",
+  "name": "extension-sdk",
+  "description": "Extension SDK for the CMS web app",
+  "repository": "https://github.com/twixlyhq/extension-sdk.git",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["extensions"]
 }
