@@ -51,8 +51,8 @@ var twixlyExtension = {
     submit: function () {
       return postMessenger.call('extension_form_submit');
     },
-    setPadding: function () {
-      return postMessenger.call('extension_form_submit');
+    setPadding: function (height) {
+      return postMessenger.call('extension_form_set_padding', { height: height });
     }
   },
   itemType: null,
