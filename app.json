@@ -1,6 +1,6 @@
 {
   "name": "extension-sdk",
-  "description": "Extension SDK for the CMS web app",
+  "description": "Extension SDK for the Twixly Web App",
   "repository": "https://github.com/twixlyhq/extension-sdk.git",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["extensions"]

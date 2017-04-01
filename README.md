@@ -14,7 +14,7 @@ with the Twixly Management App.
 - [`extension.bucket`](#extensionbucket)
   - [Item types](#content-types)
   - [Items](#items)
-  - [Assets](#assets)
+  - [Media](#media)
 - [`extension.locales`](#extensionlocales)
 - [`extension.window`](#extensionwindow)
 - [`extension.dialogs`](#extensiondialogs)
@@ -22,7 +22,7 @@ with the Twixly Management App.
 ## Inclusion in your project
 
 You will need to include the
-[twixly-extensions-sdk](https://github.com/twixlyhq/extension-sdk)
+[twixly-extension-sdk](https://github.com/twixlyhq/extension-sdk)
 library in your HTML5 app:
 
 ```html
@@ -268,12 +268,12 @@ dialogs.selectMultipleitems({min: 1, max: 3})
 
 ### `dialogs.selectSingleAsset(options)`
 
-Counterpart of `selectSingleitem` for assets. A `itemTypes` option is not
+Counterpart of `selectSingleitem` for media. A `itemTypes` option is not
 available.
 
-### `dialogs.selectMultipleAssets(options)`
+### `dialogs.selectMultipleMedia(options)`
 
-Counterpart of `selectMultipleitems` for assets. A `itemTypes` option is
+Counterpart of `selectMultipleitems` for media. A `itemTypes` option is
 not available.
 
 [browserify]: http://browserify.org/
