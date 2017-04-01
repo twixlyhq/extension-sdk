@@ -1,5 +1,5 @@
 {
-  "name": "twixly-extension",
+  "name": "twixly-extension-sdk",
   "version": "0.0.10",
   "main": "index.js",
   "repository": {
