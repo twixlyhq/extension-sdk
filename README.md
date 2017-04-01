@@ -283,5 +283,4 @@ Counterpart of `selectMultipleitems` for media. A `itemTypes` option is
 not available.
 
 [browserify]: http://browserify.org/
-[cma-js]: https://github.com/twixly/twixly-management.js/tree/legacy
-[package]: https://www.npmjs.com/package/twixly-ui-extensions-sdk
+[package]: https://www.npmjs.com/package/twixly-extension-sdk
