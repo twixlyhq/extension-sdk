@@ -48,10 +48,16 @@ point for all extension related code. If you require the script from the web
 without any module system the item point is available as
 
 ```javascript
-window.twixlyExtension.init(function (extension) {
-  var value = extension.field.getValue()
-  extension.field.setValue("Hello world!")
-})
+function appStart(extension) {
+  var value = extension.field.getValue();
+  extension.field.setValue('Hello world!');
+}
+
+twixlyExtension.init()
+  .then(appStart)
+  .catch(function (err) {
+    console.log(err);
+  });
 ```
 
 If you use a CommonJS packager for the browser (e.g. [Browserify]) you need to

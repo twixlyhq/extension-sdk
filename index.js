@@ -344,3 +344,4 @@ window.twixly.call = function(method, params) {
   return postMessenger.call(method, params);
 }
 window.twixly.extension = new Extension;
+window.twixlyExtension = window.twixly.extension;
