@@ -7,7 +7,8 @@
     "url": "https://glantz@bitbucket.org/glantz/sdk.git"
   },
   "scripts": {
-    "start": "watchify index.js -o 'uglifyjs -cm > ./dist/twixly-extension.min.js' -v | node index.js",
+    "start": "watchify index.js -o './dist/twixly-extension.min.js'",
+    "start-soon": "watchify index.js -o 'uglifyjs -cm > ./dist/twixly-extension.min.js' -v | node index.js",
     "start-deprecated": "node index.js"
   },
   "author": "Gabriel Lantz <twixly.io>",
@@ -21,7 +22,7 @@
     "superagent": "1.2.0"
   },
   "devDependencies": {
-    "uglify-js": "2.7.5",
+    "uglify-js": "^2.8.20",
     "watchify": "3.9.0"
   }
 }
