@@ -230,10 +230,6 @@ class PostMessenger {
 function setPostMessage (iframeId) {
   let msgCount = 0
   return function dispatch (method, params) {
-    // params = params ?
-    //          params : 
-    //          {};
-    // params.field_id = twixlyField.id;
     const msgId = msgCount++
     parent.postMessage({
       iframeId: iframeId,
