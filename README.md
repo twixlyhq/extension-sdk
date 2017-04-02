@@ -76,7 +76,7 @@ Use this HTML template to quickly get up and running in creating your new and aw
 ```
 # Extension API Reference
 
-<h2 class="h2" id="table-of-contents" style="margin-top: 25px;">`extension.itemType`</h2>
+### `extension.itemType`
 
 This API gives you access to data about the item type and the item. It has
 the form as described under "item type properties" in our [api
