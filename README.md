@@ -89,7 +89,7 @@ is attached to.
 
 | Name                                      | Arguments                         | Returns                                                    | Description                                  |
 | ----------------------------------------- | --------------------------------- | ---------------------------------------------------------- | -------------------------------------------- |
-| `extension.field.getValue()`              | none                              | Mixed value depending of [field type](/field-types.html)   | Gets the current value of the field          |
+| `extension.field.getValue()`              | none                              | Mixed value depending of [field type](http://docs.cloudpen.io/field-types.html)   | Gets the current value of the field          |
 | `extension.field.setValue(value)`         | value: string                     | Promise:<void> Field                                       | Sets the value for the field                 |
 | `extension.field.setInvalid(Boolean)`     | boolean: true/false               | undefined                                                  | Title for this extension                     |
 | `extension.field.onChange(cb)`            | function                          | Field object                                               | URI to the extension                         |
