@@ -74,9 +74,7 @@ Use this HTML template to quickly get up and running in creating your new and aw
 </body>
 </html>
 ```
----
-title: Extension API Reference
----
+# Extension API Reference
 
 <h2 class="h2" id="table-of-contents" style="margin-top: 25px;">`extension.itemType`</h2>
 
@@ -84,7 +82,7 @@ This API gives you access to data about the item type and the item. It has
 the form as described under "item type properties" in our [api
 documentation](http://docs.cloudpen.io/item-types.html).
 
-## `extension.field`
+### `extension.field`
 
 This API gives you access to the value and metadata of the field the extension
 is attached to.
