@@ -170,10 +170,6 @@ titleField.setValue(oldTitle.toUpperCase());
 The `bucket` object exposes methods that allow the extension to read and
 manipulate a wide range of objects in the bucket.
 
-### Item Types
-### Items
-### Media
-
 Allows operating on the current bucket's item types, items and media.
 
 - `bucket.get([item-type, item, media], options): Promise<void>`
