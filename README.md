@@ -1,4 +1,6 @@
-# Introduction&#8291;&#8291;&#8291;
+# Extensions
+
+## Introduction&#8291;&#8291;&#8291;
 
 Twixly Extensions lets you extend Twixly in a powerful way. You can create any type of field or view. It's your imagination that stops you. This document describes the API that an extension can use to communicate with the Twixly Management App.
 
