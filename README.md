@@ -1,4 +1,4 @@
-# Twixly Extension SDK
+# Twixly Extensions SDK
 
 ## Introduction&#8291;&#8291;&#8291;
 
